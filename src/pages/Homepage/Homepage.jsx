@@ -5,9 +5,20 @@ import Credits from "../../components/Credits/Credits";
 import { useRetrieveData } from "../../hooks/useRetrieveData";
 import { motion } from "framer-motion";
 import { defaultPageFadeInVariants } from "../../motionUtils";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { selectFolderList } from "../../redux/folders/folder.selectors";
+import { fetchFolderItemsAsync } from "../../redux/folderitems/folderitems.actions";
+
 
 const Homepage = () => {
     const rows = useRetrieveData('movies');
+    const dispatch = useDispatch();
+    const folderList = useSelector(selectFolderList);
+
+    useEffect (() => {
+        dispatch(fetchFolderItemsAsync(folderList));
+    }, [dispatch, folderList]);
 
     return (
         <motion.div

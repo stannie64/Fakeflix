@@ -8,6 +8,9 @@ import series from "./series";
 import favourites from "./favourites";
 import search from "./search";
 import detailModal from "./modal";
+import folderModal from "./foldermodal";
+import folder from './folders';
+import folderitems from './folderitems';
 
 const persistConfig = {
     key: 'root',
@@ -21,7 +24,10 @@ const rootReducer = combineReducers({
     movies,
     series,
     favourites,
-    detailModal
+    detailModal,
+    folderModal,
+    folder,
+    folderitems,
 })
 
 export default persistReducer(persistConfig, rootReducer);
